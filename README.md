@@ -16,7 +16,7 @@ if you need more complex roles system you can use [Zizaco/entrus](https://github
 Via Composer
 
 ``` bash
-$ composer require merodiro/SimpleAdmin
+$ composer require merodiro/simple-admin
 ```
 
 Run the command to publish the package migration
