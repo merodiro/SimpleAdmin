@@ -10,20 +10,18 @@
     ],
     "homepage": "https://github.com/merodiro/simple-admin",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Amr A. Mohammed",
-            "email": "merodiro@gmail.com",
-            "homepage": "https://web-point.github.io/",
-            "role": "Developer"
-        }
-    ],
+    "authors": [{
+        "name": "Amr A. Mohammed",
+        "email": "merodiro@gmail.com",
+        "homepage": "https://web-point.github.io/",
+        "role": "Developer"
+    }],
     "require": {
         "illuminate/support": "~5.5",
-        "php" : "~7.0"
+        "php": "~7.0"
     },
     "require-dev": {
-        "phpunit/phpunit" : "~6.0",
+        "phpunit/phpunit": "~6.0",
         "squizlabs/php_codesniffer": "^3.2"
     },
     "autoload": {
@@ -43,12 +41,12 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev",
-            "laravel": {
-                "providers": [
-                    "Merodiro\\SimpleAdmin\\SimpleAdminServiceProvider"
-                ]
-            }
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Merodiro\\SimpleAdmin\\SimpleAdminServiceProvider"
+            ]
         }
     },
     "config": {
