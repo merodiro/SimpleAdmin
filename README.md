@@ -5,9 +5,12 @@
 [![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-SimpleAdmin is a simple way to have admin in your laravel 5.5 project.
+
+SimpleAdmin is a simple way to have admin in your laravel 5.5 projects.
 
 if you need more complex roles system you can use [Zizaco/entrus](https://github.com/Zizaco/entrust)
+
+![preview](/preview.jpg)
 
 ## Installation
 
@@ -22,7 +25,7 @@ Run the command to publish the package migration
 ```bash
 php artisan vendor:publish --provider="Merodiro\SimpleAdmin\SimpleAdminServiceProvider"
 ```
-It assumes that users are in users table, if not you can change the name in the migration file  
+It assumes that users are in the `users` table, if not you can change the name in the migration file
 
 Migrate database
 
@@ -44,21 +47,20 @@ protected $routeMiddleware = [
 To make user as admin set `$user->admin` to `1`
 
 ### Blade Templates
-There is a blade template to show content to admins only
+to show content to admins only
 
-```
+```php
 @admin
-    <h3>this is visible for admins only</h3>
+    <h3>this is visible to admins only</h3>
 @endadmin
 ```
+to show different content to admins and non-admins users
 
-to show different content to admins and non admins use
-
-```
+```php
 @admin
-    <h3>this is visible for admins only</h3>
+    <h3>this is visible to admins only</h3>
 @else
-    <h3>this is visible for non admins only</h3>
+    <h3>this is visible to non admins only</h3>
 @endadmin
 ```
 
@@ -72,7 +74,6 @@ Route::get('/admin', function () {
 })->middleware('admin');
 ``` 
 
-
 <!-- ## Testing
 
 ``` bash
@@ -85,7 +86,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 
 ## Security
 
-If you discover any security related issues, please email merodiro@gmail.com instead of using the issue tracker.
+If you discover any security-related issues, please email merodiro@gmail.com instead of using the issue tracker.
 
 ## Credits
 
