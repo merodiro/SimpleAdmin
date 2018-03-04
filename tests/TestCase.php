@@ -10,8 +10,6 @@ abstract class TestCase extends AbstractPackageTestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->loadLaravelMigrations('sqlite');
-        // $this->artisan('migrate', ['--database' => 'sqlite']);
 
         $this->withFactories(__DIR__.'/database/factories');
 

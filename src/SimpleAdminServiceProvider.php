@@ -26,7 +26,8 @@ class SimpleAdminServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
 
         $this->mergeConfigFrom(
-            __DIR__.'/config/simple_admin.php', 'simple_admin'
+            __DIR__.'/config/simple_admin.php',
+            'simple_admin'
         );
 
         Blade::if('admin', function () {

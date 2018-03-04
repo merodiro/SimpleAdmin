@@ -1,6 +1,8 @@
 <?php
 
-$factory->define(\Merodiro\SimpleAdmin\User::class, function (Faker\Generator $faker) {
+use Illuminate\Foundation\Auth\User;
+
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

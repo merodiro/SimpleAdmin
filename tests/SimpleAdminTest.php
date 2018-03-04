@@ -5,6 +5,7 @@ namespace Merodiro\SimpleAdmin;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Auth\User;
 
 class SimpleAdminTest extends TestCase
 {
