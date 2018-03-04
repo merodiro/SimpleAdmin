@@ -19,6 +19,16 @@ class SimpleAdminServiceProvider extends ServiceProvider
             __DIR__ . '/migrations/' => database_path('migrations')
         ], 'migrations');
 
+        $this->publishes([
+            __DIR__.'/config/simple_admin.php' => config_path('simple_admin.php'),
+        ], 'config');
+
+        $this->loadMigrationsFrom(__DIR__ . '/migrations');
+
+        $this->mergeConfigFrom(
+            __DIR__.'/config/simple_admin.php', 'simple_admin'
+        );
+
         Blade::if('admin', function () {
             return optional(Auth::user())->admin === 1;
         });

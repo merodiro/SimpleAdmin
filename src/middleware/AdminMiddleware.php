@@ -4,6 +4,7 @@ namespace Merodiro\SimpleAdmin\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
@@ -20,6 +21,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return abort(403);
+        return abort(Response::HTTP_FORBIDDEN);
     }
 }

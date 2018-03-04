@@ -22,12 +22,16 @@ $ composer require merodiro/simple-admin
 
 Run the command to publish the package migration
 
+Optional only if users table name isn't `users`
+
 ```bash
 php artisan vendor:publish --provider="Merodiro\SimpleAdmin\SimpleAdminServiceProvider"
 ```
-It assumes that users are in the `users` table, if not you can change the name in the migration file
+
 
 Migrate database
+
+It assumes that users are in the `users` table, if not you can change the config file
 
 ```bash
 php artisan migrate
@@ -74,11 +78,11 @@ Route::get('/admin', function () {
 })->middleware('admin');
 ``` 
 
-<!-- ## Testing
+## Testing
 
 ``` bash
 $ composer test
-``` -->
+```
 
 ## Contributing
 
