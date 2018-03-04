@@ -2,7 +2,7 @@
 
 return [
     /*
-    *   table name of the users table
+    *   table name of the users
     */
     'table_name' => 'users'
 ];
