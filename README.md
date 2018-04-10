@@ -1,4 +1,4 @@
-# SimpleAdmin
+# SimpleRoles
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -8,11 +8,9 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-SimpleAdmin is a simple way to have admin in your laravel 5.5 projects.
+SimpleRoles is a simple way to have roles in your laravel projects.
 
-if you need more complex roles system you can use [Zizaco/entrus](https://github.com/Zizaco/entrust)
-
-![preview](/preview.jpg)
+![preview](/preview.png)
 
 ## Installation
 
@@ -24,12 +22,9 @@ $ composer require merodiro/simple-admin
 
 Run the command to publish the package migration
 
-Optional only if users table name isn't `users`
-
 ```bash
-php artisan vendor:publish --provider="Merodiro\SimpleAdmin\SimpleAdminServiceProvider"
+php artisan vendor:publish --provider="Merodiro\SimpleRoles\SimpleRolesServiceProvider"
 ```
-
 
 Migrate database
 
@@ -43,31 +38,49 @@ add middleware in `app/Http/Kernel.php`
 
 ```php
 protected $routeMiddleware = [
-        ...
-        'admin'      => \Merodiro\SimpleAdmin\Middleware\AdminMiddleware::class,
-    ];
+    ...
+    'role'      => \Merodiro\SimpleRoles\Middleware\RoleMiddleware::class,        
+];
 ```
 
 ## Usage
+add roles to `roles` array in simple-roles config file first
 
-To make user as admin set `$user->admin` to `1`
+### Set Role
+
+```php
+$user->setRole('admin');
+```
+
+### Remove Role
+
+```php
+$user->removeRole();
+```
+
+### Has Role
+```php
+if($user->hasRole('admin')){
+    // do something
+}
+```
 
 ### Blade Templates
 to show content to admins only
 
 ```php
-@admin
+@role('admin')
     <h3>this is visible to admins only</h3>
-@endadmin
+@endrole
 ```
 to show different content to admins and non-admins users
 
 ```php
-@admin
+@role('admin')
     <h3>this is visible to admins only</h3>
 @else
     <h3>this is visible to non admins only</h3>
-@endadmin
+@endrole
 ```
 
 ### middleware
@@ -77,7 +90,7 @@ you can use middleware to limit accessing a certain route to admins only
 ```php
 Route::get('/admin', function () {
     ...
-})->middleware('admin');
+})->middleware('role:admin');
 ``` 
 
 ## Testing

@@ -1,9 +1,9 @@
 <?php
 
-namespace Merodiro\SimpleAdmin;
+namespace Merodiro\SimpleRoles;
 
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
-use Merodiro\SimpleAdmin\SimpleAdminServiceProvider;
+use Merodiro\SimpleRoles\SimpleRolesServiceProvider;
 
 abstract class TestCase extends AbstractPackageTestCase
 {
@@ -13,20 +13,34 @@ abstract class TestCase extends AbstractPackageTestCase
 
         $this->withFactories(__DIR__.'/database/factories');
 
-        \Route::middleware('admin')->any('/_test', function () {
+
+        \Route::middleware('role:admin')->any('/_admin', function () {
             return 'OK';
         });
+
+        \Route::middleware('role:manger')->any('/_manger', function () {
+            return 'OK';
+        });
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        parent::getEnvironmentSetUp($app);
+        $app['config']->set('simple_roles.roles', [
+            'admin' => 1,
+            'manger' => 2
+        ]);
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SimpleAdminServiceProvider::class
+            SimpleRolesServiceProvider::class
         ];
     }
 
     protected function resolveApplicationHttpKernel($app)
     {
-        $app->singleton('Illuminate\Contracts\Http\Kernel', \Merodiro\SimpleAdmin\Http\Kernel::class);
+        $app->singleton('Illuminate\Contracts\Http\Kernel', \Merodiro\SimpleRoles\Http\Kernel::class);
     }
 }

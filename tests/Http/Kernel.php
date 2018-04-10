@@ -1,6 +1,6 @@
 <?php
 
-namespace Merodiro\SimpleAdmin\Http;
+namespace Merodiro\SimpleRoles\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -30,6 +30,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth'       => \Illuminate\Auth\Middleware\Authenticate::class,
         'can'        => \Illuminate\Auth\Middleware\Authorize::class,
-        'admin'      => \Merodiro\SimpleAdmin\Middleware\AdminMiddleware::class,
+        'role'      => \Merodiro\SimpleRoles\Middleware\RoleMiddleware::class,
     ];
 }

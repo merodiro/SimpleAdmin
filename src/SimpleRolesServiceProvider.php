@@ -1,12 +1,12 @@
 <?php
 
-namespace Merodiro\SimpleAdmin;
+namespace Merodiro\SimpleRoles;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Auth;
 
-class SimpleAdminServiceProvider extends ServiceProvider
+class SimpleRolesServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -20,18 +20,18 @@ class SimpleAdminServiceProvider extends ServiceProvider
         ], 'migrations');
 
         $this->publishes([
-            __DIR__.'/config/simple_admin.php' => config_path('simple_admin.php'),
+            __DIR__.'/config/simple_roles.php' => config_path('simple_roles.php'),
         ], 'config');
 
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
 
         $this->mergeConfigFrom(
-            __DIR__.'/config/simple_admin.php',
-            'simple_admin'
+            __DIR__.'/config/simple_roles.php',
+            'simple_roles'
         );
 
-        Blade::if('admin', function () {
-            return optional(Auth::user())->admin === 1;
+        Blade::if('role', function ($role) {
+            return optional(Auth::user())->hasRole($role);
         });
     }
 

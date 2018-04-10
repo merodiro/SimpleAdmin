@@ -1,10 +1,10 @@
 {
-    "name": "merodiro/simple-admin",
+    "name": "merodiro/simple-roles",
     "type": "library",
-    "description": "A simple admin system",
+    "description": "Simple laravel roles",
     "keywords": [
         "Merodiro",
-        "SimpleAdmin",
+        "SimpleRoles",
         "Admin",
         "laravel"
     ],
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Merodiro\\SimpleAdmin\\": "src"
+            "Merodiro\\SimpleRoles\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Merodiro\\SimpleAdmin\\": "tests"
+            "Merodiro\\SimpleRoles\\": "tests"
         }
     },
     "scripts": {
@@ -46,7 +46,7 @@
         },
         "laravel": {
             "providers": [
-                "Merodiro\\SimpleAdmin\\SimpleAdminServiceProvider"
+                "Merodiro\\SimpleRoles\\SimpleRolesServiceProvider"
             ]
         }
     },

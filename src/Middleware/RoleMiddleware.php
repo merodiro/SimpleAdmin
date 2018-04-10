@@ -1,12 +1,12 @@
 <?php
 
-namespace Merodiro\SimpleAdmin\Middleware;
+namespace Merodiro\SimpleRoles\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class RoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,9 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $role)
     {
-        if (optional(Auth::user())->admin === 1) {
-            return $next($request);
-        }
-
-        return abort(Response::HTTP_FORBIDDEN);
+        abort_unless(optional(Auth::user())->hasRole($role), Response::HTTP_FORBIDDEN);
+        return $next($request);
     }
 }

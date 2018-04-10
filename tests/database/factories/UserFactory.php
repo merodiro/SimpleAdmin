@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Auth\User;
+use Merodiro\SimpleRoles\Models\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
@@ -10,6 +10,6 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-        'admin' => 0
+        'role' => 0
     ];
 });

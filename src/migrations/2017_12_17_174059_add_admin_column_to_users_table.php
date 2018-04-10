@@ -13,8 +13,8 @@ class AddAdminColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table(config('simple_admin.table_name'), function (Blueprint $table) {
-            $table->boolean('admin')->default(0);
+        Schema::table(config('simple_roles.table_name'), function (Blueprint $table) {
+            $table->unsignedInteger('role')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class AddAdminColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table(config('simple_admin.table_name'), function (Blueprint $table) {
-            $table->dropColumn('admin');
+        Schema::table(config('simple_roles.table_name'), function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 }
