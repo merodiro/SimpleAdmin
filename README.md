@@ -17,7 +17,7 @@ SimpleRoles is a simple way to have roles in your laravel projects.
 Via Composer
 
 ``` bash
-$ composer require merodiro/simple-admin
+$ composer require merodiro/simple-roles
 ```
 
 Run the command to publish the package migration
