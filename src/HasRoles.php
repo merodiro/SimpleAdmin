@@ -22,7 +22,6 @@ trait HasRoles
         }
 
         $this->role = $roles[$role];
-
     }
 
     public function removeRole()
